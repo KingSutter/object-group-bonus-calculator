@@ -73,4 +73,6 @@ function bonusInfo(employee) {
 
 for (let index = 0; index < employees.length; index++) {
   console.log(bonusInfo(employees[index]));
-}
+} // works!
+
+//create an array to output everything on the DOM
