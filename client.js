@@ -45,22 +45,26 @@ x = {
   annualSalary: '35000',
   reviewRating: 1
 };
-function calculateBonus(rating, number, income){
+function calculateBonus(employee){
+  // this variables should keep the rest of the function code clean
+  let rating = employee.reviewRating;
+  let number = employee.employeeNumber;
+  let income = employee.annualSalary;
   let bonus = 0;
   if (rating == 3) {
-    bonus += .04;
+    bonus += .04; // if rating is 3, increase bonus by 4%
   }
   else if (rating == 4){
-    bonus += .06;
+    bonus += .06; // if rating is 4, increase bonus by 6%
   }
   else if (rating == 5){
-    bonus += .1;
+    bonus += .1; // if rating is 5, increase bonus by 10%
   }
   if (number.length == 4 && bonus <= .08){
-    bonus += .05;
+    bonus += .05; // if employee number is 4 digits long and bonus won't go to 13%, increase by 5%
   }
-  if (income > 65000 && bonus > 0){
-    bonus -= .01;
+  if (income > 65000 && bonus >= .01){
+    bonus -= .01; // if income is greater than $65,000, reduce bonus by 1% if not already at 0.
   }
   return bonus * income;
 }
@@ -68,10 +72,10 @@ function newEmployee(employee) {
   
   employeeBonus = {
     name: employee.name,
-    bonusPercentage: null,
-    totalCompensation: null,
+    bonusPercentage: calculateBonus(employee),
+    totalCompensation: ,
     totalBonus: null,
   }
 }
 
-console.log(newEmployee(x));
+console.log(calculateBonus(employees[1]));
