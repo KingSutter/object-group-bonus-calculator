@@ -66,16 +66,18 @@ function calculateBonus(employee){
   if (income > 65000 && bonus >= .01){
     bonus -= .01; // if income is greater than $65,000, reduce bonus by 1% if not already at 0.
   }
-  return bonus * income;
+  return bonus;
 }
 function newEmployee(employee) {
-  
+  baseBonus = calculateBonus(employee);
+  income = Number(employee.annualSalary);
   employeeBonus = {
     name: employee.name,
-    bonusPercentage: calculateBonus(employee),
-    totalCompensation: ,
-    totalBonus: null,
+    bonusPercentage: baseBonus,
+    totalCompensation: baseBonus*income + income,
+    totalBonus: Math.round(baseBonus*income)
   }
+  return employeeBonus;
 }
 
-console.log(calculateBonus(employees[1]));
+console.log(newEmployee(employees[1]));
